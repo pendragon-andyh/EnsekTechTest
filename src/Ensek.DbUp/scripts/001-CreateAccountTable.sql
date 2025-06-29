@@ -1,0 +1,8 @@
+CREATE TABLE dbo.Account
+(
+	AccountId INT NOT NULL,
+	FirstName VARCHAR(50) NOT NULL,
+	LastName  VARCHAR(50) NOT NULL
+
+	CONSTRAINT Account_PK PRIMARY KEY CLUSTERED (AccountId)
+);
