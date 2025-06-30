@@ -14,6 +14,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ensek.DbUp", "src\Ensek.DbUp\Ensek.DbUp.csproj", "{2C98106A-5101-482E-A4FB-EF9C8C7F6BD4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{7BA69ACF-F127-4458-A116-9BF1071290D2}"
+	ProjectSection(SolutionItems) = preProject
+		docs\original-brief.md = docs\original-brief.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{2376953D-9693-4214-A9A4-A86D8BFB5303}"
+	ProjectSection(SolutionItems) = preProject
+		assets\Meter_Reading.csv = assets\Meter_Reading.csv
+		assets\Test_Accounts.csv = assets\Test_Accounts.csv
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ensek.WebApi", "src\Ensek.WebApi\Ensek.WebApi.csproj", "{9C404EF8-B8A3-8A0C-85CD-F9E9BCA2EEA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ensek.Lib", "src\Ensek.Lib\Ensek.Lib.csproj", "{48A4DD4E-F4F6-4CC8-8FE7-3AB183AAAA68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,12 +39,24 @@ Global
 		{2C98106A-5101-482E-A4FB-EF9C8C7F6BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C98106A-5101-482E-A4FB-EF9C8C7F6BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C98106A-5101-482E-A4FB-EF9C8C7F6BD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C404EF8-B8A3-8A0C-85CD-F9E9BCA2EEA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C404EF8-B8A3-8A0C-85CD-F9E9BCA2EEA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C404EF8-B8A3-8A0C-85CD-F9E9BCA2EEA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C404EF8-B8A3-8A0C-85CD-F9E9BCA2EEA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48A4DD4E-F4F6-4CC8-8FE7-3AB183AAAA68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48A4DD4E-F4F6-4CC8-8FE7-3AB183AAAA68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48A4DD4E-F4F6-4CC8-8FE7-3AB183AAAA68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48A4DD4E-F4F6-4CC8-8FE7-3AB183AAAA68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2C98106A-5101-482E-A4FB-EF9C8C7F6BD4} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{7BA69ACF-F127-4458-A116-9BF1071290D2} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
+		{2376953D-9693-4214-A9A4-A86D8BFB5303} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
+		{9C404EF8-B8A3-8A0C-85CD-F9E9BCA2EEA5} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{48A4DD4E-F4F6-4CC8-8FE7-3AB183AAAA68} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2C611FB3-F2E6-48CA-8B04-DE8CB16927F0}
