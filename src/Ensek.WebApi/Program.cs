@@ -11,6 +11,9 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        // Configure Serilog  ... appsettings.json tells it to log to the console in its "compressed json" format.
+        // My current company have implemented their own JSON formatter which outputs in a format that is more
+        // friendly to DataDog.
         Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(builder.Configuration)
             .Enrich.FromLogContext()
@@ -24,6 +27,7 @@ public class Program
         builder.Services
             .AddLogging(x =>
             {
+                // Attach MS logging to Serilog.
                 x.ClearProviders();
                 x.AddSerilog(Log.Logger);
             })

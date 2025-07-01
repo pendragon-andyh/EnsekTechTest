@@ -21,7 +21,7 @@ public class MeterReadingUploadRequestHandler
         TextReader inputStreamReader,
         CancellationToken cancellationToken)
     {
-        var commaSeparatedRecordEnumerator = new MeterReadingRecordEnumerator(inputStreamReader.ReadLinesIntoAsyncEnumerable(), request.MaxErrorCount);
+        var commaSeparatedRecordEnumerator = new MeterReadingRecordEnumerator(inputStreamReader.ReadLinesIntoAsyncEnumerable());
         try
         {
             var producerTask = commaSeparatedRecordEnumerator.GetDataRecords(cancellationToken).CreateProducerTask(64, out var consumerEnumerable, cancellationToken);

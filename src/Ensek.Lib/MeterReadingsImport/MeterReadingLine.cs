@@ -1,46 +1,29 @@
 ﻿namespace Ensek.Lib.MeterReadingsImport;
 
-using System.Data;
 using System.Globalization;
-using Microsoft.Data.SqlClient.Server;
 
 public class MeterReadingLine
 {
-    private const int ExpectedColumnCount = 3;
-
-    private static readonly SqlMetaData[] MetaData =
-    {
-        new("RowId", SqlDbType.Int),
-        new("AccountId", SqlDbType.Int),
-        new("MeterReadingDateTime", SqlDbType.DateTime),
-        new("MeterReadValue", SqlDbType.Int),
-        new("ReadingStatus", SqlDbType.Int),
-        new("StatusReason", SqlDbType.VarChar, 80)
-    };
-
-    private readonly string[] columnData;
-
-    public MeterReadingLine(int rowId, string rawData, string[] columnData)
-    {
-        this.columnData = columnData;
-        RowId = rowId;
-        RawData = rawData;
-    }
+    public const int ExpectedColumnCount = 3;
 
     public int RowId { get; }
     public string RawData { get; }
-
+    public int? AccountId { get; }
+    public DateTime? MeterReadingDateTime { get; }
+    public int? MeterReadValue { get; }
     public MeterReadingLineStatus Status { get; private set; }
-
     public string? Reason { get; private set; }
 
-    public SqlDataRecord? Parse()
+    public MeterReadingLine(int rowId, string rawData, string[] columnData)
     {
+        RowId = rowId;
+        RawData = rawData;
+
         if (columnData.Length < ExpectedColumnCount)
         {
             // If too-few columns then bail out immediately to protect against index out of range errors.
             AddError($"Expected {ExpectedColumnCount} columns, found {columnData.Length}");
-            return null;
+            return;
         }
 
         if (columnData.Length > ExpectedColumnCount)
@@ -55,7 +38,10 @@ public class MeterReadingLine
             || accountId < 0)
         {
             AddError($"Could not convert '{accountIdText}' into an AccountId value");
-            return null;
+        }
+        else
+        {
+            AccountId = accountId;
         }
 
         var readingDateText = columnData[1];
@@ -65,7 +51,10 @@ public class MeterReadingLine
             || readingDate.Year > 2200)
         {
             AddError($"Could not convert '{readingDateText}' into a Meter Reading Date");
-            return null;
+        }
+        else
+        {
+            MeterReadingDateTime = readingDate;
         }
 
         var readingValueText = columnData[2];
@@ -75,7 +64,10 @@ public class MeterReadingLine
             || readingValue > 99999)
         {
             AddError($"Could not convert '{readingValueText}' into a Meter Read value");
-            return null;
+        }
+        else
+        {
+            MeterReadValue = readingValue;
         }
 
         //if (readingValueText.Length != 5)
@@ -83,28 +75,9 @@ public class MeterReadingLine
         //    // Original brief said reading-values SHOULD have format of 'NNNNN' - so allow for now.
         //    AddWarning($"Meter read value '{readingValueText}' should have format 'NNNNN'");
         //}
-
-        var record = new SqlDataRecord(MetaData);
-
-        record.SetInt32(0, RowId);
-        record.SetInt32(1, accountId);
-        record.SetDateTime(2, readingDate);
-        record.SetInt32(3, readingValue);
-        record.SetInt32(4, (int)Status);
-
-        if (string.IsNullOrEmpty(Reason))
-        {
-            record.SetDBNull(5);
-        }
-        else
-        {
-            record.SetString(5, Reason);
-        }
-
-        return record;
     }
 
-    public void AddError(string reasonText)
+    private void AddError(string reasonText)
     {
         if (Status < MeterReadingLineStatus.Error)
         {
@@ -113,7 +86,7 @@ public class MeterReadingLine
         }
     }
 
-    public void AddWarning(string reasonText)
+    private void AddWarning(string reasonText)
     {
         if (Status < MeterReadingLineStatus.Warning)
         {
