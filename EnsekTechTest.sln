@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ensek.WebApi", "src\Ensek.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ensek.Lib", "src\Ensek.Lib\Ensek.Lib.csproj", "{48A4DD4E-F4F6-4CC8-8FE7-3AB183AAAA68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ensek.UnitTests", "test\Ensek.UnitTests\Ensek.UnitTests.csproj", "{9E51CA8D-5950-493A-88EA-BD2DE12CDAA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{48A4DD4E-F4F6-4CC8-8FE7-3AB183AAAA68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48A4DD4E-F4F6-4CC8-8FE7-3AB183AAAA68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48A4DD4E-F4F6-4CC8-8FE7-3AB183AAAA68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E51CA8D-5950-493A-88EA-BD2DE12CDAA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E51CA8D-5950-493A-88EA-BD2DE12CDAA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E51CA8D-5950-493A-88EA-BD2DE12CDAA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E51CA8D-5950-493A-88EA-BD2DE12CDAA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{2376953D-9693-4214-A9A4-A86D8BFB5303} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
 		{9C404EF8-B8A3-8A0C-85CD-F9E9BCA2EEA5} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{48A4DD4E-F4F6-4CC8-8FE7-3AB183AAAA68} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{9E51CA8D-5950-493A-88EA-BD2DE12CDAA7} = {FAF19FBF-017A-421A-BED5-842094731A9E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2C611FB3-F2E6-48CA-8B04-DE8CB16927F0}
