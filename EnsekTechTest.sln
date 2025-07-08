@@ -22,6 +22,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{2376953D-9693-4214-A9A4-A86D8BFB5303}"
 	ProjectSection(SolutionItems) = preProject
 		assets\Meter_Reading.csv = assets\Meter_Reading.csv
+		assets\Test100000.csv = assets\Test100000.csv
+		assets\Test200000.csv = assets\Test200000.csv
 		assets\Test_Accounts.csv = assets\Test_Accounts.csv
 	EndProjectSection
 EndProject

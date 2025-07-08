@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
@@ -33,6 +34,8 @@ public class MeterReadingWriter : IMeterReadingWriter
         IEnumerable<MeterReadingLine> meterReadings,
         CancellationToken cancellationToken)
     {
+        var sw = Stopwatch.StartNew();
+
         await using var conn = await GetDatabaseConnection(cancellationToken).ConfigureAwait(false);
         await using var cmd = conn.CreateCommand();
         cmd.CommandType = CommandType.StoredProcedure;
@@ -47,7 +50,7 @@ public class MeterReadingWriter : IMeterReadingWriter
         await using var resultSet = await cmd.ExecuteReaderAsync(cancellationToken).ConfigureAwait(false);
         while (await resultSet.ReadAsync(cancellationToken))
         {
-            return new BulkUploadResponse(resultSet.GetInt32(0), resultSet.GetInt32(1), resultSet.GetInt32(2));
+            return new BulkUploadResponse(resultSet.GetInt32(0), resultSet.GetInt32(1), resultSet.GetInt32(2), sw.ElapsedMilliseconds);
         }
 
         throw new InvalidDataFileFormatException("Invalid response from database");
@@ -62,10 +65,10 @@ public class MeterReadingWriter : IMeterReadingWriter
 
     private static IEnumerable<SqlDataRecord> ToSqlDataRecords(IEnumerable<MeterReadingLine> lines)
     {
+        var record = new SqlDataRecord(MetaData);
+
         foreach (var line in lines)
         {
-            var record = new SqlDataRecord(MetaData);
-
             record.SetInt32(0, line.RowId);
 
             // AccountId, MeterReadingDateTime, and MeterReadValue can be null if there was an error.

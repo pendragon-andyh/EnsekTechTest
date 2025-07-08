@@ -9,7 +9,7 @@ By Andrew Harman
 ## Usage
 
 ```
-curl -i --data-binary @Meter_Reading.csv.txt -H "Content-Type: text/csv" "https://localhost:7006/meter-reading-uploads?isValidationOnlyMode=false"
+curl -i --data-binary @Meter_Reading.csv -H "Content-Type: text/csv" "https://localhost:7006/meter-reading-uploads?isValidationOnlyMode=false"
 ```
 
 ## Implementation

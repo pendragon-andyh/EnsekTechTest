@@ -2,7 +2,7 @@
 
 using System.Globalization;
 
-public class MeterReadingLine
+public struct MeterReadingLine
 {
     public const int ExpectedColumnCount = 3;
 
